@@ -1,9 +1,9 @@
 from datetime import datetime
-from flask_login import UserMixin
+
 from sqlalchemy import Integer, ForeignKey, Column
 from sqlalchemy.ext.declarative import declared_attr
 
-from app import db, login_manager
+from app import db
 from constants import KnessetVars, KNESSETS_LIST
 
 
@@ -15,7 +15,7 @@ class Yeshuv(db.Model):
     yeshuv_type = db.Column(db.Integer)
     yeshuv_name_en = db.Column(db.Text)
     yeshuv_name_hebrew = db.Column(db.Text)
-    # Knesset_22 = db.relationship('Knesset_22', backref='yeshuv', lazy=True)
+    Knesset_22 = db.relationship('Knesset_22', backref='yeshuv', lazy=True)
 
     def __repr__(self):
         return '[{}]'.format(self.yeshuv_name_hebrew)
@@ -67,28 +67,20 @@ class Kalfi(db.Model):
         return str(self.__dict__)
 
 
-class Knesset(db.Model):
-    __abstract__ = True
+class Knesset_22(db.Model):
+    __tablename__ = 'knesset_22'
     index = db.Column(db.Integer, primary_key=True, nullable=False )
-    @declared_attr
-    def yeshuv_sn(cls):
-        return Column(Integer,primary_key=True, forigen_key= ForeignKey('yeshuv.yeshuv_sn'))
-    # SN = db.Column(db.Integer, db.ForeignKey('yeshuv.yeshuv_sn'),
-    #                primary_key=True, nullable=False)
+    # @declared_attr
+    # def yeshuv_sn(cls):
+    #     return Column(Integer,primary_key=True, forigen_key= ForeignKey('yeshuv.yeshuv_sn'))
+    SN = db.Column(db.Integer, db.ForeignKey('yeshuv.yeshuv_sn'),
+                   primary_key=True, nullable=False)
     Kalfi_Num = db.Column(db.Integer, primary_key=True, nullable=False)
     BZB = db.Column(db.Integer, nullable=False)
     Voters = db.Column(db.Integer, nullable=False)
     Error_Voters = db.Column(db.Integer, nullable=False)
     Vote_Percent = db.Column(db.Float, nullable=False)
     Error_Vote_Percent = db.Column(db.Float, nullable=False)
-
-
-
-
-
-
-class Knesset_22(Knesset):
-    __tablename__ = 'knesset_22'
 
 
     def __eq__(self, other):

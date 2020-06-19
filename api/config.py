@@ -12,16 +12,8 @@ class Config:
     db_password ="flask#T761"  #os.environ.get('DB_PASSWORD')
     db_host = (os.environ.get('DB_HOSTNAME') or "127.0.0.1") + "/"
     db_name = "knesset_flask"    #os.environ.get('DB_NAME')  or
-    FULL_DB_URL = 'mysql://' + db_username + ":" + db_password + "@" + db_host + db_name
-    #
-    # FLASKY_MAIL_SUBJECT_PREFIX = '[Bukka Blog]'
-    # FLASKY_MAIL_SENDER = 'Bukka'
-    #
-    # MAIL_SERVER = 'smtp.googlemail.com'
-    # MAIL_PORT = 587
-    # MAIL_USE_TLS = True
-    # MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    FULL_DB_URL = 'mysql+pymysql://' + db_username + ":" + db_password + "@" + db_host + db_name
+
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
 
     @staticmethod

@@ -53,19 +53,9 @@ def test(coverage=False):
 
 
 
-# @manager.command
-# def test():
-#  """Run the unit tests."""
-#  import unittest
-#  tests = unittest.TestLoader().discover('tests')
-#  unittest.TextTestRunner(verbosity=2).run(tests)
-
-
-
-
 @app.shell_context_processor
 def make_shell_context():
-    return dict(db=db, Yeshuv=Yeshuv, app=app ) #, User=User, Follow=Follow, Role=Role, Permission=Permission)
+    return dict(db=db, Yeshuv=Yeshuv, app=app )
 
 manager.add_command("shell", Shell(make_context=make_shell_context))
 
