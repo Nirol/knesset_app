@@ -8,6 +8,21 @@ from app import db
 from models import  Yeshuv
 
 
+@api.route('/yeshuvHebrewList', methods=['GET'])
+def full_yeshuv_list():
+    optional_yeshuv_list_of_lists = db.session.query(Yeshuv.yeshuv_name_hebrew).all()
+    yeshuv_list = [item for sublist in optional_yeshuv_list_of_lists for item in sublist]
+
+
+
+
+
+    json_form = jsonify(["ab","abb","abbbb"])
+    
+    return jsonify(yeshuv_list)
+
+
+
 @api.route('/yeshuv/<int:yeshuv_sn>',  methods=['GET'])
 def get_yeshuv_data_api(yeshuv_sn):
  yeshuv_knesset_model_data = query_yeshuvknesset_by_sn(yeshuv_sn)
