@@ -3,13 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 
-import AutoCompYeshuv from './autocomplete/AutoCompYeshuv';
+import App from './App';
+import Yeshuv from './Yeshuv/Yeshuv';
+import Subscribe from './Yeshuv/Subscribe';
+import Owlcarousel from './mid_section/Owlcarousel';
+import SimpleLineChart from './recharttry';
+import Example from './recharttry';
+import TryParse from './Yeshuv/charts/tryparse';
+
+
 
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   //<React.StrictMode>
-    <AutoCompYeshuv />,
+    <Yeshuv />,
  // </React.StrictMode>,
   document.getElementById('root')
 );

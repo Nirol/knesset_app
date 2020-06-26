@@ -1,6 +1,6 @@
 from exceptions import ValidationError
 from models import YeshuvType
-from yeshuv_sn_by_name import query_yeshuv_type_by_name
+from yeshuv_queries import query_yeshuv_type_by_name, query_yeshuv_type_by_sn
 import json
 
 
@@ -27,6 +27,14 @@ def __turn_yeshuv_type_into_json(yeshuv_type_info: YeshuvType):
 
 def query_yeshuv_type_json_by_name(yeshuv_name: str):
     yeshuv_type = query_yeshuv_type_by_name(yeshuv_name)
+    yeshuv_type_info = query_yeshuv_type_info(yeshuv_type)
+    json_answer_ready = __turn_yeshuv_type_into_json(yeshuv_type_info)
+
+    return json_answer_ready
+
+
+def query_yeshuv_type_json_by_sn(yeshuv_sn: int):
+    yeshuv_type = query_yeshuv_type_by_sn(yeshuv_sn)
     yeshuv_type_info = query_yeshuv_type_info(yeshuv_type)
     json_answer_ready = __turn_yeshuv_type_into_json(yeshuv_type_info)
 

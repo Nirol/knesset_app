@@ -29,3 +29,12 @@ def query_yeshuv_type_by_name(yeshuv_name: str) -> YeshuvType:
 
 
 
+
+def query_yeshuv_type_by_sn(yeshuv_sn: int) -> YeshuvType:
+    yeshuv_type = db.session.query(Yeshuv.yeshuv_type).filter_by(
+        yeshuv_sn=yeshuv_sn).first()
+    if yeshuv_type:
+        return yeshuv_type[0]
+
+    else:
+        return -1

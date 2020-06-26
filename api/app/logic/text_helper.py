@@ -19,3 +19,17 @@ def dequote_wrapper(s: str):
     s_new = __dequote(s)
     s_clean = __remove_sequence_quote(s_new)
     return s_clean
+
+
+
+
+def combine_yeshuv_jsons(elec_data_json, kalfi_data_json):
+    import json
+    elec_data_json_dict = json.loads(elec_data_json)
+    kalfi_data_json_dict = json.loads(kalfi_data_json)
+
+    elec_data_json_dict.update(kalfi_data_json_dict)
+
+    jsonString_merged = json.dumps(elec_data_json_dict)
+
+    return jsonString_merged

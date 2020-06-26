@@ -73,7 +73,7 @@ class Knesset_22(db.Model):
     # @declared_attr
     # def yeshuv_sn(cls):
     #     return Column(Integer,primary_key=True, forigen_key= ForeignKey('yeshuv.yeshuv_sn'))
-    SN = db.Column(db.Integer, db.ForeignKey('yeshuv.yeshuv_sn'),
+    yeshuv_sn = db.Column(db.Integer, db.ForeignKey('yeshuv.yeshuv_sn'),
                    primary_key=True, nullable=False)
     Kalfi_Num = db.Column(db.Integer, primary_key=True, nullable=False)
     BZB = db.Column(db.Integer, nullable=False)
@@ -225,14 +225,16 @@ class YeshuvKnesset(db.Model):
 
     def to_json_dict(self):
         data = {}
+        data["elections"] = []
         for knesset in KNESSETS_LIST:
-            data[knesset] = []
             knesset_dict = {}
             for var in KnessetVars:
                 knesset_var_value= self.get_knesset_var(var, knesset)
                 knesset_dict[var.name] = knesset_var_value
-            data[knesset].append(knesset_dict)
+            knesset_dict["knesset_num"] = knesset
+            data["elections"].append(knesset_dict)
         return data
+
 
 
 class YeshuvType(db.Model):

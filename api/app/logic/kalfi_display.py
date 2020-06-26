@@ -7,13 +7,12 @@ from queries.kalfi import query_kalfi_metadata
 
 from queries.knesset22 import query_knesset22_kalfi, \
     query_knesset22_kalfi_top_n_by_vote_percent, \
-    query_knesset22_kalfi_bottom_n_vote_percent
+    query_knesset22_kalfi_bottom_n_vote_percent, query_knesset_22_kalfi_count
 from constants import KalfiDisplayType
 from models import Kalfi, Knesset_22, YeshuvKnesset
 import constants
 from queries.yeshuv_knesset import query_yeshuvknesset_by_sn
-
-
+from yeshuv_queries import query_yeshuv_type_by_sn
 
 
 def fill_data_dict(kalfi_data, data_dict):
@@ -120,9 +119,11 @@ def __sort_kalfi_by_vote_percent(kalfi_data_top_n, kalfi_data_bottom_n,  kalfi_m
 
 
 def get_kalfi_meta_data_for_yeshuv_by_display(yeshuv_sn: int, display: KalfiDisplayType) -> Type[KalfiDisplay]:
+
     if display.value is KalfiDisplayType.All.value:
         kalfi_data_list = query_knesset22_kalfi(yeshuv_sn)
         kalfi_meta_list = query_kalfi_metadata(yeshuv_sn)
+
 
 
         return KalfiAllDisplay(display, kalfi_data_list, kalfi_meta_list)
@@ -151,19 +152,21 @@ def get_yeshuv_knesset_elections_data_json(yeshuv_sn):
 
 
 
-def __yeshuv_json_meta_response(kalfi_meta_display: Type[KalfiDisplay]):
+def __yeshuv_json_meta_response(kalfi_meta_display: Type[KalfiDisplay], yeshuv_type: int):
     json_dict_meta_data = kalfi_meta_display.to_json_dict()
+    json_dict_meta_data["type"] = yeshuv_type
     json_answer_ready_meta = json.dumps(json_dict_meta_data,
                                         ensure_ascii=False)
     return json_answer_ready_meta
 
 
 
-def get_yeshuv_kalfi_json(yeshuv_sn: int, kalfi_num: int)->[str, 'JSON']:
-
+def get_yeshuv_kalfi_json(yeshuv_sn: int)->[str, 'JSON']:
+    num_kalfis_22 = query_knesset_22_kalfi_count(yeshuv_sn)
     display = constants.get_representation_by_kalfi_num(
-        kalfi_num)
+        num_kalfis_22)
     kalfi_meta_display = get_kalfi_meta_data_for_yeshuv_by_display(yeshuv_sn,
                                                                    display)
-    return __yeshuv_json_meta_response(kalfi_meta_display)
+    yeshuv_type = query_yeshuv_type_by_sn(yeshuv_sn)
+    return __yeshuv_json_meta_response(kalfi_meta_display, yeshuv_type)
 
