@@ -2,6 +2,8 @@ import constants
 from queries.yeshuv_knesset import query_yeshuvknesset_by_sn
 from text_helper import combine_yeshuv_jsons
 from yeshuv_queries import query_yeshuv_sn_by_name
+from yeshuv_type import query_yeshuv_type_json_by_name, \
+    query_yeshuv_type_json_by_sn
 
 from . import api
 from kalfi_display import get_kalfi_meta_data_for_yeshuv_by_display, \
@@ -25,6 +27,9 @@ def get_yeshuv_data_api(yeshuv_name):
     full_json = combine_yeshuv_jsons(elec_data_json, kalfi_data_json)
     print(full_json)
     return jsonify(full_json)
+
+
+
 
 
 

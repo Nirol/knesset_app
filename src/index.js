@@ -10,6 +10,9 @@ import Owlcarousel from './mid_section/Owlcarousel';
 import SimpleLineChart from './recharttry';
 import Example from './recharttry';
 import TryParse from './Yeshuv/charts/tryparse';
+import Tryit from './YeshuvType/tryit';
+import Example77 from './Yeshuv/charts/TypeChart';
+import TypeChart from './Yeshuv/charts/TypeChart';
 
 
 

@@ -1,6 +1,8 @@
 import React, {  useState, useEffect} from "react";
 import VP_AvgBZB from './VP_AvgBZB';
 import AreaBZBChart from "./AreaBZBChart";
+import ErrorChart from "./ErrorChart";
+import TypeChart from "./TypeChart";
 
 function  YeshuvCharts  (props)  {
   const [fetchingYeshuvData, setFetching] = useState(true);
@@ -33,6 +35,15 @@ const renderVP_AreaBZBChart = () => {
   return fetchingYeshuvData ? '' : <AreaBZBChart chartRawData={yeshuvData}/> 
  
 }
+const renderErrorChart = () => {
+  return fetchingYeshuvData ? '' : <ErrorChart chartRawData={yeshuvData}/> 
+ 
+}
+const renderTypeChart = () => {
+  return fetchingYeshuvData ? '' : <TypeChart yesuvName={yeshuvName} chartRawData={yeshuvData} />
+ 
+}
+
 
 
 
@@ -40,8 +51,14 @@ const renderVP_AreaBZBChart = () => {
       <div>
       
       <h1>hi</h1>
-      {renderVP_AvgBZBChart()}
-    
+      {renderTypeChart()}   
+      {renderVP_AvgBZBChart()}   
+
+
+      {renderVP_AreaBZBChart()}
+
+      {renderErrorChart()}
+
       </div>
 
     );

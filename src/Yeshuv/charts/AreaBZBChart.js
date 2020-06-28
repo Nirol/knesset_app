@@ -1,10 +1,10 @@
 import React, {   useState, useEffect } from 'react';
 import {
-  LineChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ComposedChart, Brush,
+  LabelList, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ComposedChart, Brush,
   AreaChart, Area,
 } from 'recharts';
 
-
+import {AxisLabel} from './AxisDesign'
 
 
 
@@ -22,9 +22,9 @@ function  AreaBZBChart  (props)  {
       const buildThirdChartData = (data) => {
         console.log(data)
         let ans = [] 
-        // const jsonObject=JSON.parse(data);
+        //  const jsonObject=JSON.parse(data);
       
-        data.elections.map(row => {
+         data.elections.map(row => {
           let temp = {}
           temp.name = row.knesset_num
           temp.BZB = row.BZB
@@ -46,26 +46,30 @@ function  AreaBZBChart  (props)  {
       
       }, []);
 
+
     return (
       <div>     
      
       <ComposedChart
-          width={500}
+          width={580}
           height={300}
           data={thirdAreaChartData}
           syncId="anyId"
           margin={{
-            top: 5, right: 58, left: 35, bottom: 25,
+            top: 15, right: 15, left: 15, bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
-          <YAxis  label={{ value: 'בז"ב', position: 'insideLeft', offset: -10 }}  />
-          <YAxis yAxisId="right" orientation="right" label={{ value: 'מספר קלפיות', position: 'insideRight', offset: -55 } } interval = "preserveEnd"
-           domain={[dataMin => (0 - Math.abs(dataMin)), dataMax => (dataMax * 2)]} />
+        <YAxis label={<AxisLabel axisType='yAxis'  x={30} y={135} width={0} height={0}>בעלי זכות בחירה</AxisLabel>} />
+          <YAxis yAxisId="right" orientation="right" label={<AxisLabel axisType='yAxis'  x={550} y={135} width={0} height={0}>מספר קלפיות</AxisLabel>} interval = "preserveEnd"
+           domain={[dataMin => Math.max(0,(0 - Math.abs(dataMin))), dataMax => (dataMax * 2)]} />
           <Tooltip />
-          <Area type="monotone" dataKey="BZB" stroke="#82ca9d" fill="#82ca9d" />
-          <Bar name="מספר קלפיות" barSize={15} fill="#8acbe3" yAxisId="right" type="monotone" dataKey="num_kalfi" stroke="#a2a0e8" />
+          <Area  name="בעלי זכות בחירה"type="monotone" dataKey="BZB" stroke="#82ca9d" fill="#82ca9d" />
+          <Bar name="מספר קלפיות" barSize={15} fill="#8acbe3" yAxisId="right" type="monotone" dataKey="num_kalfi" stroke="#a2a0e8" >
+          <LabelList dataKey="num_kalfi" position="top"  />
+          </Bar>
+
         </ComposedChart>
       </div>
     );

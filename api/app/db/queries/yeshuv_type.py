@@ -33,8 +33,7 @@ def query_yeshuv_type_json_by_name(yeshuv_name: str):
     return json_answer_ready
 
 
-def query_yeshuv_type_json_by_sn(yeshuv_sn: int):
-    yeshuv_type = query_yeshuv_type_by_sn(yeshuv_sn)
+def query_yeshuv_type_json_by_sn(yeshuv_type: int):
     yeshuv_type_info = query_yeshuv_type_info(yeshuv_type)
     json_answer_ready = __turn_yeshuv_type_into_json(yeshuv_type_info)
 

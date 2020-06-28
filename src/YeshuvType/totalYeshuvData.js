@@ -1,0 +1,1 @@
+export default  {"avg_bzb":606.43, "error_vote":0.63, "voting_percent":65.53}

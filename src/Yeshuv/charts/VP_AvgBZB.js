@@ -5,6 +5,8 @@ import {
 
 
 
+import {AxisLabel} from './AxisDesign'
+
 
 
 
@@ -28,9 +30,9 @@ const formatter = (value) => `${value}%`;
 
 const buildChartData = (data) => {
   let ans = [] 
-  const jsonObject=JSON.parse(data);
+  // const jsonObject=JSON.parse(data);
 
-  jsonObject.elections.map(row => {
+  data.elections.map(row => {
     let temp = {}
     temp.name = row.knesset_num
     temp.Avereage_BZB = row.Avg_BZB
@@ -64,13 +66,13 @@ useEffect(() => {
         height={300}
         data={chartData}
         margin={{
-          top: 5, right: 70, left: 90, bottom: 25,
+          top: 5, right: 15, left: 15, bottom: 15,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis label={{ value: "בחירות לכנסת", position: 'insideBottom', offset: -15 }} dataKey="name"  />
-        <YAxis yAxisId="left" tickFormatter={formatter} label={{ value: 'אחוז הצבעה', position: 'insideLeft', offset: -65 }} />
-        <YAxis yAxisId="right" orientation="right" label={{ value: 'ממוצע בז"ב', position: 'insideRight', offset: -55 }} />
+        <YAxis yAxisId="left" tickFormatter={formatter} label={<AxisLabel axisType='yAxis'  x={25} y={135} width={0} height={0}>אחוז הצבעה </AxisLabel>} />
+        <YAxis yAxisId="right" orientation="right" label={<AxisLabel axisType='yAxis'  x={560} y={135} width={0} height={0}>ממוצע בז"ב לקלפי</AxisLabel>}/>
         <Tooltip />
      
         <Line name="אחוז הצבעה" yAxisId="left" type="monotone"  dataKey="Vote_Percent" stroke="#8884d8" activeDot={{ r: 8 }} />
