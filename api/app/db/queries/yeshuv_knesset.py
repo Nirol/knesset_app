@@ -4,6 +4,7 @@ from models import YeshuvKnesset
 
 
 def query_yeshuvknesset_by_sn(yeshuv_sn: int) -> YeshuvKnesset:
+    print(yeshuv_sn)
     yeshuv_general_info = YeshuvKnesset.query.filter_by(SN=yeshuv_sn).first()
     if yeshuv_general_info is None:
         raise ValidationError

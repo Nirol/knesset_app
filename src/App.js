@@ -4,14 +4,14 @@ import Navigation from './Navigation';
 
 import UpperSection from './UpperSection';
 import MidSection from './mid_section/MidSection';
-import MidSectionServices from './mid_section/MidSectionServices';
+import MidSectionServices from './Yeshuv/charts/MidSectionServices';
 import Intro from './Intro';
 import FeatureTop from './FeatureTop';
 import FeatureBot from './FeatureBot';
 
 import Counter from './Counter';
 import Blog from './Blog';
-import Subscrice from './Yeshuv/Subscribe';
+import Subscrice from './Home/UserText';
 import Pricing from './Pricing';
 import Footer from './Footer';
 

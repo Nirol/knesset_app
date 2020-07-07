@@ -1,9 +1,9 @@
 import React from 'react';
 
-import AutoCompYeshuv from './AutoCompYeshuv';
+import AutoCompYeshuv from '../components/AutoCompYeshuv';
 import BackgroundImage from './images/knesete.png'
 
-class Subscribe extends React.Component {
+class UserText extends React.Component {
 constructor(props) {
     super(props);
     this.handleSelectionChange = this.handleSelectionChange.bind(this);
@@ -71,4 +71,4 @@ handleSelectionChange(selection) {
 
 
 
-export default Subscribe;
+export default UserText;

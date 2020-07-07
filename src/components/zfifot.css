@@ -1,0 +1,48 @@
+.zfifot {
+    color: blueviolet;
+    width: 50%;
+    float: center;
+    margin-left:22px;
+    border-radius: 15px;
+    font-weight: 700;
+}
+
+
+
+
+
+.zfifot-green{
+    color:#1c7026;
+    background: #1bc449;
+}
+
+
+.zfifot-greenYellow {
+    color:#0f571d;
+    background:#a3db63;
+
+}
+
+
+
+.zfifot-yellow{
+    color:#045915;
+    background:#edf55b;
+}
+
+.zfifot-yellowOrange {
+    color:#a35e0a;
+    background: #EBC050;
+
+}
+
+.zfifot-orange{
+    color:#824104;
+    background: #EF944D;
+}
+
+.zfifot-red{
+    color: #801008;
+    background: #e04343;
+
+}

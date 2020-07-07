@@ -1,9 +1,10 @@
 import React from 'react';
 
-import Subscribe from './Subscribe';
-import YeshuvCharts from './charts/YeshuvCharts';
+import Subscribe from './UserText';
+import YeshuvCharts from '../Yeshuv/YeshuvCharts';
+import Navigation from '../Navigation';
 
-class Yeshuv extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,26 +24,24 @@ class Yeshuv extends React.Component {
      
     }
 
-    render() {
-
-
-  
-        const renderCharts = () => {
-          
+    render() {  
+        const renderCharts = () => {          
             if(this.state.isYeshuvSelected){
                 let a=     this.state.yeshuv;                  
-                return   <YeshuvCharts yeshuvName={a}/> 
+                return  <YeshuvCharts yeshuvName={a}/> 
+                 
+             
+                
             }
-           
+            else{
+                return <Subscribe  onYeshuvSelectionChange= {this.handleYeshuvSelectionChange}/>
+            }           
         }
 
-        return (        
-
+        return (
             <div>          
-            
-        
-            <Subscribe  onYeshuvSelectionChange= {this.handleYeshuvSelectionChange}/>
-
+           
+      <Navigation/>
      {renderCharts()}
             
 
@@ -66,4 +65,4 @@ class Yeshuv extends React.Component {
     
     
     
-    export default Yeshuv;
+    export default App;

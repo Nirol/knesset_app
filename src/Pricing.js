@@ -6,7 +6,7 @@ class Pricing extends React.Component {
     render () {
         return (   
 
-            <div className="colorlib-pricing">
+       
             <div className="container">
                 <div className="row">
                     <div className="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
@@ -49,7 +49,7 @@ class Pricing extends React.Component {
                     </div>
                 </div>
             </div>
-        </div>
+  
             
             );
 

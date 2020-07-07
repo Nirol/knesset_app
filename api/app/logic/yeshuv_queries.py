@@ -8,6 +8,7 @@ from models import YeshuvKnesset, Knesset_22, Kalfi, Yeshuv, YeshuvType
 
 
 def query_yeshuv_sn_by_name(yeshuv_name: str) -> int:
+    print(yeshuv_name)
     yeshuv_sn = db.session.query(Yeshuv.yeshuv_sn).filter_by(
         yeshuv_name_hebrew=yeshuv_name).first()
     if yeshuv_sn:

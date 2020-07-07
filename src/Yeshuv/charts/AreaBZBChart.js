@@ -1,12 +1,48 @@
 import React, {   useState, useEffect } from 'react';
 import {
-  LabelList, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ComposedChart, Brush,
+  LabelList, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ComposedChart, 
   AreaChart, Area,
 } from 'recharts';
 
 import {AxisLabel} from './AxisDesign'
+import './chart_design.css';
 
 
+function CustomTooltipArea (props){
+
+
+  const { active } = props;
+
+  if (active) {
+    const { payload, label } = props;
+
+    return (
+      <div className="tooltip-type">
+ 
+        <p className="tooltip-type-text area-bzb ">{`${payload[0].name} : ${payload[0].value}`}</p>
+  
+
+      <br/>
+
+
+
+        <p className="tooltip-type-text area-kalfi">{`${payload[1].name} : ${payload[1].value}`}</p>    
+
+
+        <br/>
+        <p className="tooltip-type-text  ">{label} :בחירות לכנסת</p>
+
+    
+    
+
+
+      </div>
+    );
+
+};
+
+return null;
+}
 
 
 function  AreaBZBChart  (props)  {
@@ -20,9 +56,9 @@ function  AreaBZBChart  (props)  {
 
 
       const buildThirdChartData = (data) => {
-        console.log(data)
+       
         let ans = [] 
-        //  const jsonObject=JSON.parse(data);
+       
       
          data.elections.map(row => {
           let temp = {}
@@ -49,25 +85,33 @@ function  AreaBZBChart  (props)  {
 
     return (
       <div>     
-     
+  
       <ComposedChart
-          width={580}
+      width={500}
           height={300}
           data={thirdAreaChartData}
           syncId="anyId"
           margin={{
-            top: 15, right: 15, left: 15, bottom: 5,
+            top: 10, right: 10, left: 10, bottom: 10,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-        <YAxis label={<AxisLabel axisType='yAxis'  x={30} y={135} width={0} height={0}>בעלי זכות בחירה</AxisLabel>} />
-          <YAxis yAxisId="right" orientation="right" label={<AxisLabel axisType='yAxis'  x={550} y={135} width={0} height={0}>מספר קלפיות</AxisLabel>} interval = "preserveEnd"
+          <XAxis  tick={{ fill: 'white' }}  dataKey="name" />
+        <YAxis label={<AxisLabel axisType='yAxis'  x={17} y={161} width={0} height={0}  value= 'ממוצע בז"ב לקלפי'></AxisLabel>} />
+        
+        
+        <YAxis yAxisId="right" orientation="right" label={<AxisLabel axisType='yAxis'  x={475} y={161} width={0} height={0}value= "מספר קלפיות"></AxisLabel>} 
            domain={[dataMin => Math.max(0,(0 - Math.abs(dataMin))), dataMax => (dataMax * 2)]} />
-          <Tooltip />
-          <Area  name="בעלי זכות בחירה"type="monotone" dataKey="BZB" stroke="#82ca9d" fill="#82ca9d" />
-          <Bar name="מספר קלפיות" barSize={15} fill="#8acbe3" yAxisId="right" type="monotone" dataKey="num_kalfi" stroke="#a2a0e8" >
-          <LabelList dataKey="num_kalfi" position="top"  />
+           <Tooltip                
+
+           content={<CustomTooltipArea/>}
+           
+          />
+        
+        
+          <Area  name="בעלי זכות בחירה"type="monotone" dataKey="BZB" stroke="#c5c949" fill="#c9cc7c" />
+          <Bar name="מספר קלפיות" barSize={18} fill="#8acbe3" yAxisId="right" type="monotone" dataKey="num_kalfi" stroke="#a2a0e8" >
+          <LabelList dataKey="num_kalfi" position="top" style={{ fill:"white"}}/>
           </Bar>
 
         </ComposedChart>

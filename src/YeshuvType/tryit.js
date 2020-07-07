@@ -12,8 +12,7 @@ function  Tryit  (props)  {
 async function fetchData() {
   const response = await fetch(`/api/yeshuv/type/120`);
   const jsonData = await response.json()
-  console.log(response)
-  console.log(response)
+
   setYeshuvData(jsonData)
   setFetching(false)
   }

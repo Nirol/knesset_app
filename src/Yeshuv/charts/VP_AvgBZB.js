@@ -30,16 +30,16 @@ const formatter = (value) => `${value}%`;
 
 const buildChartData = (data) => {
   let ans = [] 
-  // const jsonObject=JSON.parse(data);
 
-  data.elections.map(row => {
+
+   data.elections.map(row => {
     let temp = {}
     temp.name = row.knesset_num
     temp.Avereage_BZB = row.Avg_BZB
     temp.Vote_Percent = row.vote_percent
     ans.push(temp) 
   })
-  console.log(ans);
+
   return ans;
 }
 

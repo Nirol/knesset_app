@@ -1,0 +1,135 @@
+	/******************************TABLE **************************/
+			
+    .tables-design {	
+        color: #fff;        
+        width: 100%;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        display: table;
+      
+    }
+   
+    .table-single{
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-bottom: 15px;
+    }
+   
+
+       .table-headlines{    
+        text-align: center;
+        vertical-align: bottom;
+        margin-top: 15px;
+       }
+
+       .table-double-hr {
+        margin-top:250px;
+        height: 5px;
+        border: 5;
+        border-top: 5px solid #1f253d;
+    
+        padding: 0;
+
+       }
+     
+                          
+        .myrow {
+            border-color: #1f253d;							
+            border-bottom:0;
+            border-top:0;	
+         				
+        }
+
+        .myheader {
+            text-align: center;	
+            border-color: #1f253d;
+            
+            height: 5px;
+            font-size:12pt;
+            font-weight: 400;
+
+          }
+
+          .mycell {
+            height: 5px;
+            text-align: center;	
+            border-color: #1f253d;					
+            font-size:10pt;			
+          }
+
+
+
+	/****************************** EXPAND TABLE **************************/
+    .expanded-row
+    {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        border-spacing: 10px;
+    }
+    .expanded-cell
+        {
+            display: table-cell;
+        
+        }
+
+
+		.left-container .social {
+            height: 85px;
+        }
+            .left-container .social li {
+                width: 75px;
+                height: 85px;										
+            }
+
+        .expanded-horizontal-list {
+           
+            margin-right: 30px;
+      
+            
+        }
+            .expanded-horizontal-list li {
+                float: right;              
+                width: 95px;
+                height: 105px;
+                text-align: center;              
+                border: 1px solid #1f253d;
+
+
+            }
+
+            .expanded-horizontal-list .facebook {
+                background: #3468af;
+    
+             
+            }
+
+            .expanded-horizontal-list .facebook .number {
+                    background: #1a4e95;                  
+             
+                }
+                .expanded-horizontal-list .twitter {
+                background: #4fc4f6;
+         
+                
+            }
+  
+                .expanded-horizontal-list .twitter .number {
+                    background: #35aadc;
+                }
+
+                .expanded-horizontal-list .googleplus {
+                background: #e64c65;
+             					
+            }
+            .expanded-horizontal-list .googleplus .number{
+                    background: #cc324b;
+                }
+                .expanded-horizontal-list .mailbox {
+                background: #50597b;						
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+            .expanded-horizontal-list .mailbox .number {
+                    background: #363f61;
+                    border-bottom-right-radius: 5px;
+                }

@@ -1,12 +1,13 @@
 import React from 'react';
-class MidSectionServices extends React.Component {
-    render () {
+function  MidSectionServices  (props)  {
+
         return (  
 
+        <div>
+             
 
-
-            <div className="colorlib-services colorlib-bg-white">
-            <div className="container">
+              <div className="colorlib-services colorlib-bg-white">
+         
                 <div className="row">
                     <div className="col-md-4 text-center animate-box">
                         <div className="services">
@@ -44,6 +45,7 @@ class MidSectionServices extends React.Component {
                 </div>
             </div>
         </div>
+      
 
             );
 
@@ -52,7 +54,7 @@ class MidSectionServices extends React.Component {
 
 
 
-        }
+
         
         
         

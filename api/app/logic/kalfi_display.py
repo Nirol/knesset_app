@@ -60,11 +60,11 @@ class KalfiAllDisplay(KalfiDisplay):
     def to_json_dict(self) -> Dict[str, str]:
         data = {}
         data['display'] = "All"
-        data['data'] = []
-        data['meta'] = []
-        fill_data_dict(self.kalfi_data_list, data['data'])
+        data['kalfi_data'] = []
+        data['kalfi_meta'] = []
+        fill_data_dict(self.kalfi_data_list, data['kalfi_data'])
 
-        fill_meta_dict(self.kalfi_meta_list, data['meta'])
+        fill_meta_dict(self.kalfi_meta_list, data['kalfi_meta'])
         return data
 
 

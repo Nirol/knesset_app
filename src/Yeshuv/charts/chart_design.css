@@ -1,0 +1,52 @@
+
+  .tooltip-type{
+
+   float:right;
+      background: rgba( 80, 89, 123, 0.68);
+ 
+  }
+
+
+  .tooltip-type-text{
+
+
+    white-space: pre;
+    display: block;
+    float:right;
+  }
+
+  .type-bzb{
+      color: #f06077;
+      font-weight: 700;
+  }
+
+  .type-vote-percent {
+      color: #11a8ab;
+      font-weight: 700;
+  }
+
+  .area-bzb {
+    color: #c9cc7c;
+    font-weight: 700;
+    
+  }
+
+
+  .area-kalfi {
+    color: #a2a0e8;
+    font-weight: 700;
+
+  }
+
+
+  .vperror-error {
+    color: #f06077;
+    font-weight: 700;
+  }
+
+
+  .vperror-vp {
+    color: #82ca9d;
+    font-weight: 700;
+  }
+ 

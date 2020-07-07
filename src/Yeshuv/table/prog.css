@@ -1,0 +1,33 @@
+
+
+.radial-prog {
+    float: 'center';
+    height: 55px;     
+    width: 55px;
+  
+    margin-left:20px;
+    margin-top:-10px;
+
+
+}
+
+.error-count-up{
+    font-size: 30pt;
+    color: #EBC050;
+    margin-top:-23px;
+}
+
+.tool-tip-zfifot{
+    height: 5px;     
+    width:  5px; 
+    float:left; 
+    margin-top:-5px;
+    margin-left:6px;
+
+
+    font-size: larger;
+    font-weight: 600;
+ 
+
+}
+
