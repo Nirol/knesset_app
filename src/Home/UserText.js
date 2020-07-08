@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AutoCompYeshuv from '../components/AutoCompYeshuv';
+import AutoCompYeshuv from '../components/searchAutoComp/AutoCompYeshuv';
 import BackgroundImage from './images/knesete.png'
 
 class UserText extends React.Component {
@@ -17,7 +17,7 @@ handleSelectionChange(selection) {
     render () {
         return (  
           
-            <div id="colorlib-subscribe" className="colorlib-subscribe" style={{ backgroundImage: `url(${BackgroundImage})`}} data-stellar-background-ratio="0.1">
+            <div id="colorlib-subscribe" className="colorlib-subscribe" style={{ backgroundImage: `url(${BackgroundImage}) ` }} data-stellar-background-ratio="0.1">
             <div className="overlay"></div>
             <div className="container">
                 <div className="row">

@@ -32,7 +32,7 @@ function YeshuvTable({ columns, data, renderRowSubComponent, }) {
 
 
 
-                if (column.id == "BZB") {
+                if (column.id === "BZB") {
 
                   return (
                     <div>
@@ -45,12 +45,12 @@ function YeshuvTable({ columns, data, renderRowSubComponent, }) {
                 }
 
 
-                else if ( column.id == "address" ) {
+                else if ( column.id === "address" ) {
                   return (
                     <th style={{width: 245}}  className="myheader" {...column.getHeaderProps()}>{column.render('Header')}</th>
                   )                  
                 }
-                else if (column.id == "location" ) {
+                else if (column.id === "location" ) {
                   return (
                     <th style={{width: 315}}   className="myheader" {...column.getHeaderProps()}>{column.render('Header')}</th>
                   )                  

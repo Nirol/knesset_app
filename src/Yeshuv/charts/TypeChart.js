@@ -1,12 +1,12 @@
 import React, {  useState, useEffect} from "react";
 import {
-    BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Line
+    BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip
 } from 'recharts';
-import DirectionProvider, { DIRECTIONS } from 'react-with-direction/dist/DirectionProvider';
+
 
 import {AxisLabel} from './AxisDesign'
 import yeshuv_type_data from '../../data/yeshuv_type_data_full'
-import total_data from '../../YeshuvType/totalYeshuvData'
+import total_data from '../../data/totalYeshuvData'
 import './chart_design.css';
 
 
@@ -18,7 +18,7 @@ function CustomTooltip (props){
   const { active } = props;
 
   if (active) {
-    const { payload, label } = props;
+    const { payload } = props;
 
     return (
       <div className="tooltip-type">

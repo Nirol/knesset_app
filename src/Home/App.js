@@ -1,24 +1,28 @@
 import React from 'react';
-
+import { Element } from 'react-scroll'
 import Subscribe from './UserText';
 import YeshuvCharts from '../Yeshuv/YeshuvCharts';
-import Navigation from '../Navigation';
+import Navigation from '../components/navigator/Navigation';
+import Footer from '../components/footer/Footer';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             isYeshuvSelected: false,
+            sn: -1,
             yeshuv: ""};
         this.handleYeshuvSelectionChange = this.handleYeshuvSelectionChange.bind(this);
 
     }
 
-    handleYeshuvSelectionChange(yeshuv){
-
+    handleYeshuvSelectionChange(yeshuv_obj){
+        console.log(yeshuv_obj)
         this.setState({
             isYeshuvSelected: true,
-            yeshuv: yeshuv
+            yeshuv: yeshuv_obj.label,
+            sn: yeshuv_obj.sn
+
         });
 
      
@@ -27,8 +31,8 @@ class App extends React.Component {
     render() {  
         const renderCharts = () => {          
             if(this.state.isYeshuvSelected){
-                let a=     this.state.yeshuv;                  
-                return  <YeshuvCharts yeshuvName={a}/> 
+                          
+                return  <YeshuvCharts yeshuvName={this.state.yeshuv} yeshuvSN={this.state.sn}/> 
                  
              
                 
@@ -39,16 +43,18 @@ class App extends React.Component {
         }
 
         return (
+         
+           
             <div>          
            
       <Navigation/>
      {renderCharts()}
-            
-
-
-
+     <Element id='my-footer' name='my-footer'>
+            <Footer  id='my-footer'/>
+            </Element>
+          
             </div>
-
+       
             );
 
 

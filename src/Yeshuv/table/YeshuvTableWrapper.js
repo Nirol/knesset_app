@@ -1,5 +1,4 @@
-import React, {   useState, useEffect} from "react";
-import DirectionProvider, { DIRECTIONS } from 'react-with-direction/dist/DirectionProvider';
+import React, {   useState} from "react";
 import makeKalfiData from './makeKalfiData'
 import { RadialProgress } from 'react-radial-progress-indicator';
 import YeshuvTable from "./YeshuvTable";
@@ -8,7 +7,7 @@ import ReactTooltip from "react-tooltip";
 import './prog.css'
 import './table.css'
 import CounterHook from "../../components/Countup";
-import Zfifot from "../../components/Zfifot";
+import Zfifot from "../../components/zfifot/Zfifot";
 const Styles = styled.div`
 padding: 1rem;
 table {

@@ -2,7 +2,6 @@ import unittest
 from typing import List
 import db_helper_test
 from app import create_app, db
-from kalfi_display import __sort_kalfi_by_kalfi_num, __sort_kalfi_by_kalfi_num
 
 from models import Yeshuv, Kalfi, Knesset_22
 

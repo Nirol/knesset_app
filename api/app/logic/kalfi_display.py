@@ -5,9 +5,9 @@ import json
 from db_helper import query_helper_kalfi_meta_top_or_bottom
 from queries.kalfi import query_kalfi_metadata
 
-from queries.knesset22 import query_knesset22_kalfi, \
-    query_knesset22_kalfi_top_n_by_vote_percent, \
-    query_knesset22_kalfi_bottom_n_vote_percent, query_knesset_22_kalfi_count
+from queries.knesset22 import query_knesset22_kalfi_all, \
+    query_knesset22_kalfi_top_n_by_voters, \
+    query_knesset22_kalfi_bottom_n_voters, query_knesset_22_kalfi_count
 from constants import KalfiDisplayType
 from models import Kalfi, Knesset_22, YeshuvKnesset
 import constants
@@ -121,7 +121,7 @@ def __sort_kalfi_by_vote_percent(kalfi_data_top_n, kalfi_data_bottom_n,  kalfi_m
 def get_kalfi_meta_data_for_yeshuv_by_display(yeshuv_sn: int, display: KalfiDisplayType) -> Type[KalfiDisplay]:
 
     if display.value is KalfiDisplayType.All.value:
-        kalfi_data_list = query_knesset22_kalfi(yeshuv_sn)
+        kalfi_data_list = query_knesset22_kalfi_all(yeshuv_sn)
         kalfi_meta_list = query_kalfi_metadata(yeshuv_sn)
 
 
@@ -129,10 +129,10 @@ def get_kalfi_meta_data_for_yeshuv_by_display(yeshuv_sn: int, display: KalfiDisp
         return KalfiAllDisplay(display, kalfi_data_list, kalfi_meta_list)
 
     elif display.value is KalfiDisplayType.TopN.value:
-        kalfi_data_top_n = query_knesset22_kalfi_top_n_by_vote_percent(yeshuv_sn)
+        kalfi_data_top_n = query_knesset22_kalfi_top_n_by_voters(yeshuv_sn)
         kalfi_meta_top_n = query_helper_kalfi_meta_top_or_bottom(yeshuv_sn, kalfi_data_top_n)
 
-        kalfi_data_bottom_n = query_knesset22_kalfi_bottom_n_vote_percent(yeshuv_sn)
+        kalfi_data_bottom_n = query_knesset22_kalfi_bottom_n_voters(yeshuv_sn)
         kalfi_meta_bottom_n = query_helper_kalfi_meta_top_or_bottom(yeshuv_sn, kalfi_data_bottom_n)
 
         return KalfiTopBotDisplay(display, kalfi_data_top_n, kalfi_data_bottom_n, kalfi_meta_top_n, kalfi_meta_bottom_n)

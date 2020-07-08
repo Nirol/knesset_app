@@ -14,10 +14,10 @@ from flask_script import Manager, Shell
 from models import Yeshuv
 
 
-app = create_app('default')
+app = create_app('testing')
 manager = Manager(app)
 migrate = Migrate(app, db)
-manager.add_command('db', MigrateCommand)
+manager.add_command('db_queries', MigrateCommand)
 
 
 

@@ -1,6 +1,6 @@
 import React, {  useState, useEffect} from "react";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip
 } from 'recharts';
 
 
@@ -21,36 +21,34 @@ import {AxisLabel} from './AxisDesign'
 const formatter = (value) => `${value}%`;
 
   function  VP_AvgBZB  (props)  {
-    const [chartDataInput, setChartDataInput] = useState(props.chartRawData);
+    const [chartDataInput] = useState(props.chartRawData);
     const [chartData, setChartData] = useState(null);
   
 
 
 
 
-const buildChartData = (data) => {
-  let ans = [] 
-
-
-   data.elections.map(row => {
-    let temp = {}
-    temp.name = row.knesset_num
-    temp.Avereage_BZB = row.Avg_BZB
-    temp.Vote_Percent = row.vote_percent
-    ans.push(temp) 
-  })
-
-  return ans;
-}
 
 
 useEffect(() => {
+  const buildChartData = (data) => {
+    let ans = [] 
+  
+  
+     data.elections.map(row => {
+      let temp = {}
+      temp.name = row.knesset_num
+      temp.Avereage_BZB = row.Avg_BZB
+      temp.Vote_Percent = row.vote_percent
+      ans.push(temp) 
+    })
+  
+    return ans;
+  };
+  
   let chartDataReady = []
   chartDataReady = buildChartData(chartDataInput);
   setChartData(chartDataReady);
-
-
-
 }, []);
 
 

@@ -8,22 +8,25 @@ import TypeChart from "./charts/TypeChart";
 
 import YeshuvTableWrapper from "./table/YeshuvTableWrapper";
 import './yeshuv-charts.css'
-import "../components/mini.css";
-import HeadLineYeshuv from "../components/HeadLineYeshuv";
+
+import HeadLineYeshuv from "../components/headline/HeadLineYeshuv";
 
 
 function YeshuvCharts(props) {
+
   const [fetchingYeshuvData, setFetching] = useState(true);
   const [yeshuvData, setYeshuvData] = useState(null);
   const [yeshuvName, setYeshuvName] = useState(props.yeshuvName);
+  const [yeshuvSN, setYeshuvSN] = useState(props.yeshuvSN);
   const [yeshuvType, setYeshuvType] = useState(null);
 
 
 
-  const handleYeshuvSelectionChange = useCallback((yeshuv) => {
+  const handleYeshuvSelectionChange = useCallback((yeshuv_obj) => {
 
     setFetching(true);
-    setYeshuvName(yeshuv);
+    setYeshuvName(yeshuv_obj.label);
+    setYeshuvSN(yeshuv_obj.sn)
 
   }, []);
 
@@ -32,7 +35,7 @@ function YeshuvCharts(props) {
   async function fetchData() {
     console.log("fetching:");
     console.log({ yeshuvName });
-    const response = await fetch(`/api/yeshuv/${yeshuvName}`);
+    const response = await fetch(`/api/yeshuv/sn/${yeshuvSN}`);
     const jsonData = await response.json();
     const parsedDataJson = JSON.parse(jsonData);
     setYeshuvData(parsedDataJson);
@@ -75,7 +78,7 @@ function YeshuvCharts(props) {
 
 
   const renderHeadLine = () => {
-    return fetchingYeshuvData ? '' : <HeadLineYeshuv yeshuvName={yeshuvName} yeshuvType={yeshuvType} onSelectionChange={(yeshuv) => handleYeshuvSelectionChange(yeshuv)} />
+    return fetchingYeshuvData ? '' : <HeadLineYeshuv yeshuvName={yeshuvName} yeshuvType={yeshuvType} onSelectionChange={(yeshuv_obj) => handleYeshuvSelectionChange(yeshuv_obj)} />
 
   }
 

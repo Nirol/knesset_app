@@ -8,14 +8,12 @@ from config import config
 
 
 bootstrap = Bootstrap()
-
 db = SQLAlchemy()
-
 
 def create_app(config_name):
     app = Flask(__name__)
-    #TODO: change location of this setting to env
-    app.config['SECRET_KEY'] = 'hard to guess string'
+
+
 
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
@@ -26,7 +24,7 @@ def create_app(config_name):
     db.init_app(app)
     # USED TO CREATE TABLES
     # with app.app_context():
-    #     db.create_all()
+    #     db_queries.create_all()
     # from .main import main as main_blueprint
     # app.register_blueprint(main_blueprint)
     from .api_1_0 import api as api_blueprint
