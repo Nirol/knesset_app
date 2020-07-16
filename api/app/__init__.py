@@ -33,5 +33,4 @@ def create_app(config_name):
     return app
 
 if __name__ == '__main__':
-    print("abc")
     create_app(os.getenv('FLASK_CONFIG') or 'default')

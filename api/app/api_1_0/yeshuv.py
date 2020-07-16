@@ -22,19 +22,16 @@ def get_yeshuv_data_api_sn(yeshuv_sn):
     is_sn_valid = query_validate_yeshuv_exist_by_sn(yeshuv_sn)
     if is_sn_valid == -1:
         raise ValidationError('illegal yeshuv chosen')
-
     elec_data_json = get_yeshuv_knesset_elections_data_json(yeshuv_sn)
     kalfi_data_json = get_yeshuv_kalfi_json(yeshuv_sn)
 
     full_json = combine_yeshuv_jsons(elec_data_json, kalfi_data_json)
-    print(full_json)
     return jsonify(full_json)
 
 @api.route('/autocomplete/<string:prefix_yeshuv>', methods=['GET'])
 def autocomplete(prefix_yeshuv):
     optional_yeshuv_list = db.session.query(Yeshuv.yeshuv_name_hebrew).filter(
         Yeshuv.yeshuv_name_hebrew.like('%' + str(prefix_yeshuv) + '%')).all()
-    print(optional_yeshuv_list)
     return jsonify(optional_yeshuv_list)
 
 

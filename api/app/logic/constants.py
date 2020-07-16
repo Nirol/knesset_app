@@ -9,7 +9,6 @@ class KalfiDisplayType(Enum):
     TopN = 2
 
 def get_representation_by_kalfi_num(kalfi_num: int) -> KalfiDisplayType:
-    print("in get rep kalfi num")
     if kalfi_num <=10:
         return KalfiDisplayType.All
     else:

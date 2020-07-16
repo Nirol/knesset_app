@@ -8,8 +8,6 @@ from models import Yeshuv
 from app import *
 
 if __name__ == '__main__':
-
-
     app = create_app(os.getenv('FLASK_CONFIG') or 'default')
     migrate = Migrate(app, db)
     app.run()
