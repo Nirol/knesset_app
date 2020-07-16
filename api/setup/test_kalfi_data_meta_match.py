@@ -2,6 +2,9 @@ import unittest
 from typing import List
 import db_helper_test
 from app import create_app, db
+from kalfi_display import __sort_kalfi_by_kalfi_num, __sort_kalfi_by_kalfi_num, \
+    __sort_kalfi_by_kalfi_num, __sort_kalfi_by_kalfi_num, \
+    __sort_kalfi_by_kalfi_num
 
 from models import Yeshuv, Kalfi, Knesset_22
 
@@ -33,7 +36,7 @@ class TestKalfiMeta(unittest.TestCase):
 # testing for number in kalfi in results vs in the meta,
 # 4 kalfis in total were missing from the results (probbably based to corruption kalfis
 #  in arabic yeshuv, should validate that
-# TODO validate 4 missing kalfi are the corrupted kalfis
+
 
 def validate_list_match_test_db(kalfi_data_list: List[Knesset_22],
                                 kalfi_meta_list: List[Kalfi]):

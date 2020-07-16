@@ -1,16 +1,18 @@
 from typing import List
 
-from queries import yeshuv_knesset, kalfi
+from queries import kalfi
 from models import Knesset_22, Kalfi
 
-
+#extracting kalfi numbers from Knesset_22 objects.
 def __parse_knesset22_query_for_sn(query_result: List[Knesset_22]) -> List[int]:
     kalfi_num_list = [x.Kalfi_Num for x in query_result]
     return kalfi_num_list
 
 
-
-def __fix_meta_n_order(kalfi_meta_n, kalfi_data_top_or_bottom_n):
+#Ordering the list of Kalfi meta objets on the same kalfi number order as the
+# kalfi data.
+def __fix_meta_n_order(kalfi_meta_n: List[Kalfi],
+                       kalfi_data_top_or_bottom_n:List[Knesset_22]) -> List[Kalfi]:
     ans =[]
     for kalfi_data in kalfi_data_top_or_bottom_n:
         kalfi_num = kalfi_data.Kalfi_Num
@@ -20,7 +22,7 @@ def __fix_meta_n_order(kalfi_meta_n, kalfi_data_top_or_bottom_n):
     return ans
 
 
-
+#extract list of Kalfi meta objects based on Knesset_22 objects.
 def query_helper_kalfi_meta_top_or_bottom(yeshuv_sn: int,
                                           kalfi_data_top_or_bottom_n: List[
                                               Knesset_22]) -> List[Kalfi]:

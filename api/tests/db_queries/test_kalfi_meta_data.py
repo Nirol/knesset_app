@@ -4,7 +4,8 @@ import unittest
 
 from app import create_app, db
 from constants import KALFI_METADATA_COUNT
-from queries.kalfi import query_kalfi_metadata, query_kalfi_metadata_all
+from queries.kalfi import query_kalfi_metadata
+from db_queries import query_kalfi_metadata_all
 
 from tests import YESHUV_SN_FOR_TESTING, YESHUV_SN_FOR_TESTING_C
 

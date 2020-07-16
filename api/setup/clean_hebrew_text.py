@@ -2,7 +2,7 @@
 
 import re
 
-from kalfi import query_kalfi_metadata_all
+from db_queries import query_kalfi_metadata_all
 from models import Kalfi
 
 
@@ -39,7 +39,9 @@ def __clean_kalfi_hebrew_texts(kalfi_meta: Kalfi) -> None:
         kalfi_meta.update_location(final_cclean_location)
 
 
-
+# As part of the setup, clean hebrew texts of kalfi locations and address
+# including double extra quotes chars and extra spaces on the edges.
+# this script also update the DB with the clean version of the hebrew texts.
 def clean_kalfi_meta_hebrew():
     kalfi_meta_data_list = query_kalfi_metadata_all()
     for knesset_meta in kalfi_meta_data_list:

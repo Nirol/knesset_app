@@ -2,7 +2,7 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from config import config
-
+import os
 
 
 
@@ -29,4 +29,9 @@ def create_app(config_name):
     # app.register_blueprint(main_blueprint)
     from .api_1_0 import api as api_blueprint
     app.register_blueprint(api_blueprint, url_prefix='/api/')
+
     return app
+
+if __name__ == '__main__':
+    print("abc")
+    create_app(os.getenv('FLASK_CONFIG') or 'default')

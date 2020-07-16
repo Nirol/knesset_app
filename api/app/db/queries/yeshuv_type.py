@@ -3,7 +3,7 @@ from models import YeshuvType
 import json
 
 
-def query_yeshuv_type_info(yeshuv_type):
+def __query_yeshuv_type_info(yeshuv_type):
     yeshuv_type_info = YeshuvType.query.filter_by(type_sn=yeshuv_type).first()
     if yeshuv_type_info is None:
         raise ValidationError
@@ -26,9 +26,9 @@ def __turn_yeshuv_type_into_json(yeshuv_type_info: YeshuvType):
 
 
 
-
+# all yeshuv types info was transfered to the frontend, since its small
+# size data that is needed repeatedly.
 def query_yeshuv_type_json_by_sn(yeshuv_type: int):
-    yeshuv_type_info = query_yeshuv_type_info(yeshuv_type)
+    yeshuv_type_info = __query_yeshuv_type_info(yeshuv_type)
     json_answer_ready = __turn_yeshuv_type_into_json(yeshuv_type_info)
-
     return json_answer_ready
