@@ -700,7 +700,7 @@ article {
     top: 0;
     left: 0;
     right: 0;
-    background: -moz-linear-gradient(-85deg, #1f253dec 0%, #1f253de3 75%);
+    background: linear-gradient(-85deg, #1f253dec 0%, #1f253de3 75%);
 
 
 
