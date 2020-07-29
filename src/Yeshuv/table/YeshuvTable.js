@@ -1,6 +1,6 @@
 import React from "react";
 import { useTable, useSortBy, useExpanded } from 'react-table';
-import ReactTooltip from "react-tooltip";
+
 
 
 
@@ -14,7 +14,7 @@ function YeshuvTable({ columns, data, renderRowSubComponent, }) {
     rows,
     prepareRow,
     visibleColumns,
-    state: { expanded },
+
   } = useTable({ columns, data },
     useSortBy,
     useExpanded)
@@ -26,25 +26,14 @@ function YeshuvTable({ columns, data, renderRowSubComponent, }) {
       <table   {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
-
             <tr className="myrow" {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => {
-
-
-
                 if (column.id === "BZB") {
-
                   return (
-                    <div>
+           
                       <th data-tip='בעלי זכות בחירה' data-for='test' className="myheader" {...column.getHeaderProps()}>{column.render('Header')}</th>
-                      <ReactTooltip id='test'>{}</ReactTooltip>
-                    </div>
-
-
-                  )
-                }
-
-
+                    
+                     )}
                 else if ( column.id === "address" ) {
                   return (
                     <th style={{width: 245}}  className="myheader" {...column.getHeaderProps()}>{column.render('Header')}</th>
@@ -54,22 +43,11 @@ function YeshuvTable({ columns, data, renderRowSubComponent, }) {
                   return (
                     <th style={{width: 315}}   className="myheader" {...column.getHeaderProps()}>{column.render('Header')}</th>
                   )                  
-                }
-             
-                
+                }  
                 else {
                   return (
                     <th className="myheader" {...column.getHeaderProps()}>{column.render('Header')}</th>
-                  )
-
-                }
-
-              }
-
-
-
-
-
+                  ) }}
               )}
             </tr>
           ))}
@@ -85,7 +63,7 @@ function YeshuvTable({ columns, data, renderRowSubComponent, }) {
               <React.Fragment {...rowPropsKey}>
                 <tr className="myrow">
                   {row.cells.map(cell => {
-                    console.log(row)
+                    
                     if (cell.column.id === "accessible") {
                       if (cell.value) {
                         return (

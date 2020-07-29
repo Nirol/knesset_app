@@ -18,7 +18,7 @@ import {AxisLabel} from './AxisDesign'
 
 
 
-const formatter = (value) => `${value}%`;
+
 
   function  VP_AvgBZB  (props)  {
     const [chartDataInput] = useState(props.chartRawData);
@@ -32,15 +32,19 @@ const formatter = (value) => `${value}%`;
 
 useEffect(() => {
   const buildChartData = (data) => {
-    let ans = [] 
+  
+    console.log(data)
+
+    //let ans = [] 
   
   
-     data.elections.map(row => {
-      let temp = {}
-      temp.name = row.knesset_num
-      temp.Avereage_BZB = row.Avg_BZB
-      temp.Vote_Percent = row.vote_percent
-      ans.push(temp) 
+     let ans = data.elections.map(row => {
+      let temp = {};
+      temp.name = row.knesset_num;
+      temp.Avereage_BZB = row.Avg_BZB;
+      temp.Vote_Percent = row.vote_percent;
+      //ans.push(temp) 
+      return temp;
     })
   
     return ans;
@@ -49,13 +53,13 @@ useEffect(() => {
   let chartDataReady = []
   chartDataReady = buildChartData(chartDataInput);
   setChartData(chartDataReady);
-}, []);
+}, [chartDataInput]);
 
 
 
 
 
-
+const formatter = (value) => `${value}%`;
     return (
 
       <div>

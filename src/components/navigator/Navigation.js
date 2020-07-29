@@ -29,12 +29,12 @@ class Navigation extends React.Component {
                     to="my-footer" 
                     spy={true} 
                     smooth={true} 
-                    duration={500}                
-                >
-                <a href="">
-                Contact/About 
-                </a>
-                </Link>       
+                    duration={500} 
+                    href="index.html">
+              
+                    Contact/About 
+               
+                     </Link>       
               
                 </li>
                    

@@ -1,7 +1,7 @@
 import React, {   useState, useEffect } from 'react';
 import {
   LabelList, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ComposedChart, 
-  AreaChart, Area,
+   Area,
 } from 'recharts';
 
 import {AxisLabel} from './AxisDesign'
@@ -46,7 +46,7 @@ return null;
 
 
 function  AreaBZBChart  (props)  {
-    const [chartDataInput, setChartDataInput] = useState(props.chartRawData);
+    const [chartDataInput, ] = useState(props.chartRawData);
     
     const [thirdAreaChartData, setThirdAreaChartData] = useState(null);
 
@@ -55,32 +55,39 @@ function  AreaBZBChart  (props)  {
 
 
 
+
+
+      
+      
+      useEffect(() => {     
+        
       const buildThirdChartData = (data) => {
        
-        let ans = [] 
+    
        
       
-         data.elections.map(row => {
-          let temp = {}
-          temp.name = row.knesset_num
-          temp.BZB = row.BZB
-          temp.num_kalfi = row.Kalfi_Num    
-          ans.push(temp) 
+         let ans = data.elections.map(row => {
+          let temp = {};
+          temp.name = row.knesset_num;
+          temp.BZB = row.BZB;
+          temp.num_kalfi = row.Kalfi_Num;  
+         return temp;
         })
   
         return ans;
       }
+        
 
 
-      
-      
-      useEffect(() => {      
+
+
+
         let thirdAreaChartData = []
         thirdAreaChartData = buildThirdChartData(chartDataInput);
         setThirdAreaChartData(thirdAreaChartData);
       
       
-      }, []);
+      }, [chartDataInput]);
 
 
     return (

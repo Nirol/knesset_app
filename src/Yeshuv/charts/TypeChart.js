@@ -53,69 +53,70 @@ return null;
 
   function  TypeChart  (props)  {
     console.log(props);
-    const [chartDataInput, setChartDataInput] = useState(props.chartRawData);
-    const [yeshuvName, setYeshuvName] = useState(props.yeshuvName);
+    const [chartDataInput, ] = useState(props.chartRawData);
+    const [yeshuvName, ] = useState(props.yeshuvName);
     const [chartData, setChartData] = useState(null);
   
 
 
 
-   function buildChartData  (data)  {
-
-   let ansByPop = [] 
-   
-
-let type_data = {}
-yeshuv_type_data.map(row => {
-  if (data.type===row.type_sn){  
-    type_data = row
-
-
-  }})
-  
-  let elec22 = {}
-
-  elec22.name =  yeshuvName
-  
-  elec22.avg_bzb = data.elections[4].Avg_BZB
-  elec22.vote_percent = data.elections[4].vote_percent
-  if (data.elections[4].Voters > 0) {
-    const unrounder_percent = (data.elections[4].Error_Voters / data.elections[4].Voters)*100
-    elec22.error_vote = Math.round((unrounder_percent + Number.EPSILON) * 1000) / 1000
-    elec22.error_vote_label = ((Math.round((unrounder_percent + Number.EPSILON) * 100) / 100).toString(10)).concat("%")
-  } else {
-    elec22.error_vote =0
-  
-  }   
-  ansByPop.push(elec22) 
-
-
-
-
-  let typeData = {}
-  const typeName = type_data.type_name
-  typeData.name =  typeName
-  typeData.avg_bzb = type_data.type_avg_bzb
-  typeData.vote_percent =type_data.type_vote_percent
-  typeData.error_vote = type_data.type_error_vote_percent
-  ansByPop.push(typeData) 
-
-
-
-
-  let totalData = {}
-  totalData.name = "סה\"כ"
-  totalData.avg_bzb = total_data.avg_bzb
-  totalData.vote_percent =total_data.voting_percent
-  totalData.error_vote = total_data.error_vote
-  ansByPop.push(totalData) 
-  
-  return ansByPop;
-}
 
 
 useEffect(() => {
+  function buildChartData  (data)  {
 
+    let ansByPop = [] 
+    
+ 
+
+
+let type_data = yeshuv_type_data.find(row => row.type_sn === data.type);
+
+
+ 
+ 
+
+   
+   let elec22 = {}
+ 
+   elec22.name =  yeshuvName
+   
+   elec22.avg_bzb = data.elections[4].Avg_BZB
+   elec22.vote_percent = data.elections[4].vote_percent
+   if (data.elections[4].Voters > 0) {
+     const unrounder_percent = (data.elections[4].Error_Voters / data.elections[4].Voters)*100
+     elec22.error_vote = Math.round((unrounder_percent + Number.EPSILON) * 1000) / 1000
+     elec22.error_vote_label = ((Math.round((unrounder_percent + Number.EPSILON) * 100) / 100).toString(10)).concat("%")
+   } else {
+     elec22.error_vote =0
+   
+   }   
+   ansByPop.push(elec22) 
+ 
+ 
+ 
+ 
+   let typeData = {}
+   const typeName = type_data.type_name
+   typeData.name =  typeName
+   typeData.avg_bzb = type_data.type_avg_bzb
+   typeData.vote_percent =type_data.type_vote_percent
+   typeData.error_vote = type_data.type_error_vote_percent
+   ansByPop.push(typeData) 
+ 
+ 
+ 
+ 
+   let totalData = {}
+   totalData.name = "סה\"כ"
+   totalData.avg_bzb = total_data.avg_bzb
+   totalData.vote_percent =total_data.voting_percent
+   totalData.error_vote = total_data.error_vote
+   ansByPop.push(totalData) 
+   
+   return ansByPop;
+ }
+ 
   let chartDataReady = []
   chartDataReady = buildChartData(chartDataInput);
   
@@ -123,7 +124,7 @@ useEffect(() => {
 
 
 
-}, []);
+}, [chartDataInput, yeshuvName]);
 
 
 

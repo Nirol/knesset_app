@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-
-import TryParse from './Yeshuv/charts/tryparse';
 import App from './Home/App';
 
 

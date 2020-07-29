@@ -52,7 +52,7 @@ table {
 
 
 function YeshuvTableWrapper(props) {
-  const [chartDataInput, setChartDataInput] = useState(props.chartRawData);
+  const [chartDataInput,] = useState(props.chartRawData);
 
     const columns = [
        
@@ -164,7 +164,7 @@ function YeshuvTableWrapper(props) {
         <p className="number">
         מדד צפיפות
         </p>        
-        <a className="tool-tip-zfifot"   data-tip data-for='global'>?</a >        
+        <a  className="tool-tip-zfifot"   data-tip data-for='global'>?</a>        
         <ReactTooltip id='global' aria-haspopup='true' type="dark" place="top"  role='example'>
       
           <p style ={{lineHeight: "40%"}}>ניקוד צפיפות עבור קלפיות</p>    

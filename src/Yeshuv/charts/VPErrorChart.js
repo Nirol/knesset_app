@@ -40,49 +40,39 @@ return null;
 
 
 
-
-
-
-
-
-const formatter = (value) => `${value}%`;
-
   function  VPErrorChart  (props)  {
-    const [chartDataInput, setChartDataInput] = useState(props.chartRawData);
+    const [chartDataInput] = useState(props.chartRawData);
     const [chartData, setChartData] = useState(null);
   
 
 
 
 
-const buildChartData = (data) => {
-  let ans = [] 
 
-
-  
-   data.elections.map(row => {
-    let temp = {}
-    temp.name = row.knesset_num
-    const voters = row.Voters
-    temp.Vote_Percent = row.vote_percent
-    if (voters > 0) {
-        const unrounder_percent = (row.Error_Voters / row.Voters)*100
-        temp.Error_Voters_Percent = Math.round((unrounder_percent + Number.EPSILON) * 1000) / 1000
-        temp.Error_Voters_Percent_Label = ((Math.round((unrounder_percent + Number.EPSILON) * 100) / 100).toString(10)).concat("%")
-    } else {
-        temp.Error_Voters_Percent =0
-        temp.Error_Voters_Percent_Label = ((0).toString(10)).concat("%")
-
-    }   
-    ans.push(temp) 
-  })
-
-  return ans;
-}
 
 
 useEffect(() => {
-  
+  const buildChartData = (data) => {
+ 
+     let ans = data.elections.map(row => {
+      let temp = {}
+      temp.name = row.knesset_num
+      const voters = row.Voters
+      temp.Vote_Percent = row.vote_percent
+      if (voters > 0) {
+          const unrounder_percent = (row.Error_Voters / row.Voters)*100
+          temp.Error_Voters_Percent = Math.round((unrounder_percent + Number.EPSILON) * 1000) / 1000
+          temp.Error_Voters_Percent_Label = ((Math.round((unrounder_percent + Number.EPSILON) * 100) / 100).toString(10)).concat("%")
+      } else {
+          temp.Error_Voters_Percent =0
+          temp.Error_Voters_Percent_Label = ((0).toString(10)).concat("%")
+      }   
+     return temp;
+    })
+    return ans;
+  }
+
+
   let chartDataReady = []
 
   chartDataReady = buildChartData(chartDataInput);
@@ -90,7 +80,7 @@ useEffect(() => {
 
 
 
-}, []);
+}, [chartDataInput]);
 
 
 

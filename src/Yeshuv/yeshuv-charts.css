@@ -17,16 +17,7 @@
 [class*="zocial-"]:before {
   font-family: 'zocial', sans-serif;
 }
-@font-face {
-	font-family: 'icomoon';
-	src:url('https://jlalovi-cv.herokuapp.com/font/icomoon.eot');
-	src:url('https://jlalovi-cv.herokuapp.com/font/icomoon.eot?#iefix') format('embedded-opentype'),
-		url('https://jlalovi-cv.herokuapp.com/font/icomoon.ttf') format('truetype'),
-		url('https://jlalovi-cv.herokuapp.com/font/icomoon.woff') format('woff'),
-		url('https://jlalovi-cv.herokuapp.com/font/icomoon.svg#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
+
 
 [class^="icon-"], [class*=" icon-"] {
 	font-family: 'icomoon';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import VP_AvgBZB from './charts/VP_AvgBZB';
+
 import AreaBZBChart from "./charts/AreaBZBChart";
 import ErrorChart from "./charts/VPErrorChart";
 import TypeChart from "./charts/TypeChart";
@@ -32,29 +32,29 @@ function YeshuvCharts(props) {
 
 
 
-  async function fetchData() {
-    console.log("fetching:");
-    console.log({ yeshuvName });
-    const response = await fetch(`/api/yeshuv/sn/${yeshuvSN}`);
-    const jsonData = await response.json();
-    const parsedDataJson = JSON.parse(jsonData);
-    setYeshuvData(parsedDataJson);
-    setYeshuvType(parsedDataJson.type);
-    setFetching(false);
-  }
+
 
   useEffect(() => {
-
+    async function fetchData() {
+      console.log("fetching:");
+      console.log({ yeshuvName });
+      //const aws_server = "http://ec2-3-127-65-27.eu-central-1.compute.amazonaws.com/api/yeshuv/sn/";
+      const aws_server='api/yeshuv/sn/'
+      const fetchString = `${aws_server}${yeshuvSN}`;
+      console.log(fetchString);
+      const response = await fetch(fetchString);
+      const jsonData = await response.json();
+      const parsedDataJson = JSON.parse(jsonData);
+      setYeshuvData(parsedDataJson);
+      setYeshuvType(parsedDataJson.type);
+      setFetching(false);
+    }
     fetchData();
-  }, [yeshuvName]);
+  }, [yeshuvName,yeshuvSN]);
 
 
 
 
-  const renderVP_AvgBZBChart = () => {
-    return fetchingYeshuvData ? '' : <VP_AvgBZB chartRawData={yeshuvData} />
-
-  }
 
   const renderVP_AreaBZBChart = () => {
     return fetchingYeshuvData ? '' : <AreaBZBChart chartRawData={yeshuvData} />

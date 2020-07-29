@@ -6,28 +6,21 @@ import './headline.css'
 import yeshuv_type_data from '../../data/yeshuv_type_data_full'
 
 function HeadLineYeshuv(props) {
-    const [yeshuvName, setYeshuvName] = useState(props.yeshuvName);
-    const [yeshuvType, setYeshuvType] = useState(props.yeshuvType);
+    const [yeshuvName, ] = useState(props.yeshuvName);
+    const [yeshuvType, ] = useState(props.yeshuvType);
 
 
     const handleYeshuvSelectionChange = useCallback((yeshuv) => {
         props.onSelectionChange(yeshuv);
-    }, []);
+    }, [props]);
 
 
     const getTypeText = () => {
 
-
-        const typeName = yeshuv_type_data.map(row => {
-            if (yeshuvType === row.type_sn) {
-                return row.type_name;
+        let type = yeshuv_type_data.find(row => row.type_sn === yeshuvType);
 
 
-            }
-        });
-
-
-        return typeName;
+        return type.type_name;
     }
     return (
 
